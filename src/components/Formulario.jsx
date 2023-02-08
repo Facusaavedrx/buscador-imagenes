@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Error from './Error'
 
-function Formulario () {
+function Formulario ({ saveSearch }) {
   const [words, saveWords] = useState('')
   const [error, saveError] = useState(false)
   const inputOnChange = e => saveWords(e.target.value)
@@ -10,6 +10,7 @@ function Formulario () {
     if (words.trim() === '') {
       return saveError(true)
     }
+    saveSearch(words)
     saveError(false)
   }
 
