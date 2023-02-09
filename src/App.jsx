@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
 import Formulario from './components/Formulario'
+import ListadoImagenes from './components/ListadoImagenes'
 
 function App () {
   const [search, saveSearch] = useState('')
+  const [images, saveImages] = useState([])
   useEffect(() => {
     const consultarApi = async () => {
       if (search === '') return;
@@ -11,7 +13,7 @@ function App () {
       const url = `https://pixabay.com/api/?key=${key}&q=${search}&per_page=${imagesPages}`
       const respuesta = await fetch(url)
       const resultado = await respuesta.json()
-      saveSearch(resultado)
+      saveImages(resultado.hits)
     }
     consultarApi()
   }, [search])
@@ -26,6 +28,11 @@ function App () {
               saveSearch={saveSearch}
             />
           </div>
+        </section>
+        <section className='row justify-content-center'>
+          <ListadoImagenes
+            imagenes={images}
+          />
         </section>
       </article>
     </main>

@@ -23,7 +23,7 @@ function Formulario ({ saveSearch }) {
           <input
             type='text'
             className='form-control form-control-lg'
-            placeholder='Ejemplo: Futbol..'
+            placeholder='Café, futbol, plantas..'
             onChange={inputOnChange}
           />
         </p>
